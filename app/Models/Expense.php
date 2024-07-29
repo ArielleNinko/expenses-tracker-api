@@ -16,4 +16,15 @@ class Expense extends Model
         'date',
         'expense_category_id'
     ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
+
+    public function category()
+    {
+        return $this->belongsTo(ExpenseCategory::class);
+    }
+
 }

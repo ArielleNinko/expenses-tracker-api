@@ -12,4 +12,14 @@ class ExpenseCategory extends Model
     protected $fillable = [
         'name'
     ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
+
+    public function expenses()
+    {
+        return $this->hasMany(Expense::class);
+    }
 }
