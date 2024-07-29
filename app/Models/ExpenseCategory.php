@@ -10,7 +10,12 @@ class ExpenseCategory extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'title',
+        'description',
+        'amount',
+        'date',
+        'expense_category_id',
+        'budget_id'
     ];
 
     protected $hidden = [
@@ -18,8 +23,18 @@ class ExpenseCategory extends Model
         'updated_at'
     ];
 
-    public function expenses()
+    protected $casts = [
+        'date'  => 'datetime:d-m-Y H:i:s'
+    ];
+
+    public function category()
     {
-        return $this->hasMany(Expense::class);
+        return $this->belongsTo(ExpenseCategory::class);
     }
+
+    public function budget()
+    {
+        return $this->belongsTo(Budget::class);
+    }
+
 }

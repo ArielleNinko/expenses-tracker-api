@@ -12,6 +12,7 @@ class Budget extends Model
     protected $fillable = [
         'amount',
         'period',
+        'currency',
         'start_date',
         'end_date'
     ];
@@ -20,4 +21,15 @@ class Budget extends Model
         'created_at',
         'updated_at'
     ];
+
+    protected $casts = [
+        'start_date'  => 'datetime:d-m-Y H:i:s',
+        'end_date'    => 'datetime:d-m-Y H:i:s'
+    ];
+
+    public function expenses()
+    {
+        return $this->hasMany(Expense::class);
+    }
+
 }

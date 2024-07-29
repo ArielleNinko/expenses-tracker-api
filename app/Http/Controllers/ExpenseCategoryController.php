@@ -97,10 +97,7 @@ class ExpenseCategoryController extends Controller
         } catch (Throwable $e) {
             DB::rollBack();
 
-            return response()->json([
-                'message' => 'An error occurred while processing your request',
-                'error'   => $e->getMessage()
-            ], 500);
+            throw $e;
         }
     }
 
@@ -128,10 +125,7 @@ class ExpenseCategoryController extends Controller
         } catch (Throwable $e) {
             DB::rollBack();
 
-            return response()->json([
-                'message' => 'An error occurred while processing your request',
-                'error'   => $e->getMessage()
-            ], 500);
+            throw $e;
         }
     }
 }

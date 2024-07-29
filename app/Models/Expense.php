@@ -14,7 +14,8 @@ class Expense extends Model
         'description',
         'amount',
         'date',
-        'expense_category_id'
+        'expense_category_id',
+        'budget_id'
     ];
 
     protected $hidden = [
@@ -22,9 +23,18 @@ class Expense extends Model
         'updated_at'
     ];
 
+    protected $casts = [
+        'date'  => 'datetime:d-m-Y H:i:s'
+    ];
+
     public function category()
     {
         return $this->belongsTo(ExpenseCategory::class);
+    }
+
+    public function budget()
+    {
+        return $this->belongsTo(Budget::class);
     }
 
 }
