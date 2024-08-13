@@ -20,6 +20,7 @@ class ExpenseController extends Controller
         $expenses = Expense::all();
 
         return response()->json([
+            'status'  => "OK",
             'success' => true,
             'message' => 'List of all expenses',
             'data'    => $expenses
@@ -58,6 +59,7 @@ class ExpenseController extends Controller
             DB::commit();
 
             return response()->json([
+                'status'  => "OK",
                 'success' => true,
                 'message' => "Expense added successfully",
                 'data' => $expense
@@ -79,6 +81,7 @@ class ExpenseController extends Controller
     public function show(Expense $expense) : JsonResponse
     {
         return response()->json([
+            'status'  => "OK",
             'success' => true,
             'message' => "Expense successfully retrieved",
             'data'    => $expense
@@ -87,6 +90,9 @@ class ExpenseController extends Controller
 
     /**
      * Update an existing expense
+     * 
+     * @param UpdateExpenseRequest $updateExpenseRequest
+     * @return JsonResponse
      */
     public function update(Expense $expense, UpdateExpenseRequest $updateExpenseRequest)
     {
@@ -121,6 +127,7 @@ class ExpenseController extends Controller
             DB::commit();
 
             return response()->json([
+                'status'  => "OK",
                 'success' => true,
                 'message' => "Expense updated successfully",
                 'data' => $expense
@@ -150,6 +157,7 @@ class ExpenseController extends Controller
             DB::commit();
 
             return response()->json([
+                'status'  => "OK",
                 'success' => true,
                 'message' => "Expense deleted successfully"
             ], 200);

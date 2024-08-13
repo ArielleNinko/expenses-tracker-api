@@ -19,6 +19,7 @@ class ExpenseCategoryController extends Controller
     {
         $categories = ExpenseCategory::all();
         return response()->json([
+            'status'  => "OK",
             'success' => true,
             'message' => 'List of all expenses categories',
             'data' => $categories
@@ -41,6 +42,7 @@ class ExpenseCategoryController extends Controller
             DB::commit();
 
             return response()->json([
+                'status'  => "OK",
                 'success' => true,
                 'message' => 'Category stored successfully',
                 'data' => $category
@@ -65,6 +67,7 @@ class ExpenseCategoryController extends Controller
     public function show(ExpenseCategory $category) : JsonResponse
     {
         return response()->json([
+            'status'  => "OK",
             'success' => true,
             'message' => 'Category successfully retrieved',
             'data'    => $category
@@ -89,6 +92,7 @@ class ExpenseCategoryController extends Controller
             DB::commit();
 
             return response()->json([
+                'status'  => "OK",
                 'success' => true,
                 'message' => 'Category updated successfully',
                 'data'    => $category
@@ -118,6 +122,7 @@ class ExpenseCategoryController extends Controller
             DB::commit();
 
             return response()->json([
+                'status'  => "OK",
                 'success' => true,
                 'message' => 'Category deleted successfully'
             ], 200);

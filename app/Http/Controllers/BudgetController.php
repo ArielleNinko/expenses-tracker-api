@@ -21,6 +21,7 @@ class BudgetController extends Controller
     {
         $budgets = Budget::all();
         return response()->json([
+            'status'  => "OK",
             'success' => true,
             'message' => 'List of all budgets',
             'data' => $budgets
@@ -43,6 +44,7 @@ class BudgetController extends Controller
             DB::commit();
 
             return response()->json([
+                'status'  => "OK",
                 'success' => true,
                 'message' => 'Budget stored successfully',
                 'data' => $budget
@@ -64,6 +66,7 @@ class BudgetController extends Controller
     public function show(Budget $budget) : JsonResponse
     {
         return response()->json([
+            'status'  => "OK",
             'success' => true,
             'message' => 'Budget successfully retrieved',
             'data'    => $budget
@@ -88,6 +91,7 @@ class BudgetController extends Controller
             DB::commit();
 
             return response()->json([
+                'status'  => "OK",
                 'success' => true,
                 'message' => 'Budget updated successfully',
                 'data'    => $budget
@@ -117,6 +121,7 @@ class BudgetController extends Controller
             DB::commit();
 
             return response()->json([
+                'status'  => "OK",
                 'success' => true,
                 'message' => 'Budget deleted successfully'
             ], 200);
